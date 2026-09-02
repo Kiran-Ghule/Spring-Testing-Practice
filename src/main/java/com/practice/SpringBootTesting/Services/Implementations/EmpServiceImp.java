@@ -8,6 +8,8 @@ import com.practice.SpringBootTesting.Services.EmpService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 public class EmpServiceImp implements EmpService {
     private final EmployeeRepo  empRepo;
@@ -25,16 +27,22 @@ public class EmpServiceImp implements EmpService {
 
     @Override
     public void deleteEmployee(Long id) {
-
+        empRepo.deleteById(id);
     }
 
     @Override
     public EmployeeDTO createEmployee(EmployeeDTO emp) {
-        return null;
+        Employee employee = mapper.map(emp, Employee.class);
+        employee = empRepo.save(employee);
+        return mapper.map(employee, EmployeeDTO.class);
     }
 
     @Override
     public EmployeeDTO updateEmployee(Long id, EmployeeDTO emp) {
-        return null;
+
+            Employee employee1 = mapper.map(emp, Employee.class);
+            employee1.setId(id);
+            employee1=empRepo.save(employee1);
+            return mapper.map(employee1, EmployeeDTO.class);
     }
 }
