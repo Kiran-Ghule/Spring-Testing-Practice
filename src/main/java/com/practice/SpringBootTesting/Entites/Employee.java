@@ -16,7 +16,6 @@ public class Employee {
     @Column(unique = true,nullable = false)
     private String email;
 
-    @Column(precision = 19,scale = 2)
-    private Double salary;
+    private Long salary;
 
 }
