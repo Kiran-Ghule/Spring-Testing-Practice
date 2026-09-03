@@ -4,7 +4,7 @@ import com.practice.SpringBootTesting.DTO.EmployeeDTO;
 import com.practice.SpringBootTesting.Entites.Employee;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface EmpService {
 
     public EmployeeDTO getEmployee(Long id);
